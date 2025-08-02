@@ -163,7 +163,7 @@ export function Footer() {
                 }}
                 className="relative flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-purple-600 to-blue-500"
               >
-                <span className="text-white font-bold">HR</span>
+                <span className="text-white font-bold">VJ</span>
               </motion.div>
               <span
                 className={`font-black text-transparent bg-clip-text bg-gradient-to-r text-xl font-mono tracking-wider transition-colors duration-500 ${
