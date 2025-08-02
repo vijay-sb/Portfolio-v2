@@ -15,7 +15,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Hemanth Raja",
+  title: "Vijay S B",
   description: "Portfolio",
 };
 
