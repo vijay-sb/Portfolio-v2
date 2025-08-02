@@ -89,58 +89,63 @@ export default function ExperiencePage() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
-  const experiences = [
-    {
-      title: "Software Developer Intern",
-      company: "Air Works India",
-      period: "May 2025 – Jun. 2025",
-      location: "Hosur, India",
-      description:
-        "Engineered a customer portal using React, Tailwind, and Recharts, enabling users to view and manage 10,000+ NRCs. Integrated real-time communication between engineers and clients, reducing resolution time by 40%. Optimized dynamic dashboard filters and graphs to improve data retrieval speed by 60%.",
-      technologies: [
-        "React",
-        "Tailwind CSS",
-        "Recharts",
-        "Real-time Communication",
-      ],
-      type: "Internship",
-    },
-    {
-      title: "FrontEnd Intern",
-      company: "SyncHubb, VIT Vellore",
-      period: "Feb. 2025 – Apr. 2025",
-      location: "Vellore, India",
-      description:
-        "Transformed 25+ Figma mockups into a responsive React/Tailwind app, cutting UI dev time by 30%. Built a central hackathon hub to manage team formation and event discovery for 300+ students. Improved internal team coordination by developing reusable components and clean layouts.",
-      technologies: ["React", "Tailwind CSS", "Figma", "UI Development"],
-      type: "Internship",
-    },
-    {
-      title: "Placement Coordinator",
-      company: "VIT Vellore",
-      period: "Jul. 2025 – Present",
-      location: "Vellore, India",
-      description:
-        "Coordinating placement drives for 1000+ students and liaising with recruiting firms to streamline onboarding. Managing pre-placement data, student outreach, and internal documentation processes.",
-      technologies: ["Communication", "Coordination", "Data Management"],
-      type: "Leadership",
-    },
-    {
-      title: "Senior Operations & Research Executive",
-      company: "Entrepreneurship Cell, VIT Vellore",
-      period: "Jun. 2024 – May 2025",
-      location: "Vellore, India",
-      description:
-        "Orchestrated 10+ experiential events for 200+ students, maintaining 100% on-time delivery. Created 5 gamified modules from market research, boosting participant retention by 20%. Executed logistics across vendor deals, venue planning, and volunteer assignments.",
-      technologies: [
-        "Event Management",
-        "Market Research",
-        "Logistics",
-        "Gamification",
-      ],
-      type: "Leadership",
-    },
-  ];
+const experiences = [
+  {
+    title: "Full-Stack Developer",
+    company: "Association for Computing Machinery | Amrita Vishwa Vidyapeetham (Amsoc)",
+    period: "Nov. 2024 – Jun. 2025",
+    location: "Coimbatore, India",
+    description:
+      "Served as the primary developer and core team member in building and scaling two full-stack platforms (Winter of Code & Summer of Code) for 1000+ users and 100+ GitHub repositories. Enabled real-time tracking of open-source contributions with a live leaderboard. Designed the frontend with global state management, GitHub OAuth, and backend API integration. Implemented server-sent events (SSE), configured PostgreSQL with Redis caching, and set up Docker containers for local development and testing.",
+    technologies: [
+      "Next.js",
+      "Zustand",
+      "PostgreSQL",
+      "OAuth",
+      "TypeScript",
+      "Tailwind CSS",
+      "Neon",
+      "Docker",
+      "Redis",
+    ],
+    type: "Internship",
+  },
+  {
+    title: "Full-Stack Developer",
+    company: "Amrita Center for Entrepreneurship",
+    period: "Sept. 2024 – Jan. 2025",
+    location: "Coimbatore, India",
+    description:
+      "Built and integrated the ACE website and admin panel into a unified platform using React and Tailwind CSS. Developed a real-time ticketing system with QR code generation and instant scan validation, ensuring smooth check-ins for events with 300+ participants. Created analytics dashboards with Chart.js to improve event planning through better data visibility.",
+    technologies: [
+      "Next.js",
+      "React.js",
+      "Recoil",
+      "Zustand",
+      "Tailwind CSS",
+      "TypeScript",
+      "ShadCN",
+      "Chart.js",
+    ],
+    type: "Internship",
+  },
+  {
+    title: "Front-End Developer",
+    company: "Loop.in | Social Event-Ticketing Platform",
+    period: "May 2025 – Present",
+    location: "Remote",
+    description:
+      "Contributed to building a responsive and user-centric ticket booking platform. Developed multiple event management pages, booking flows, and payment integrations using modern frontend technologies. Integrated over 60 backend API endpoints across authentication, payments, and event operations.",
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Zustand",
+      "Tailwind CSS",
+    ],
+    type: "Internship",
+  },
+];
+
 
   return (
     <main
@@ -224,9 +229,9 @@ export default function ExperiencePage() {
                   isDark ? "text-gray-400" : "text-gray-500"
                 }`}
               >
-                ● Full Stack Development <br />● FRONTEND SPECIALIZATION <br />●
-                Modern Tools & Frameworks <br />● Process Management <br />●
-                Event Planning <br />● Communication Skills
+                ● Full Stack Development <br />● Mobile Development <br />●
+                Modern Tools & Frameworks <br />● AI and Web 3 <br />● Problem Solving
+                 <br />● Communication Skills
               </div>
             </motion.div>
           </motion.div>
@@ -363,84 +368,86 @@ export default function ExperiencePage() {
             </h2>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              {/* Air Works */}
-              <div
-                className={`p-6 border transition-colors duration-500 ${
-                  isDark
-                    ? "border-white/10 bg-gradient-to-br from-blue-500/5 to-purple-500/5"
-                    : "border-gray-200 bg-gradient-to-br from-blue-50 to-purple-50"
-                }`}
-              >
-                <h3
-                  className={`text-lg font-black mb-3 transition-colors duration-500 ${
-                    isDark ? "text-white" : "text-gray-900"
-                  }`}
-                >
-                  ENTERPRISE DASHBOARD ENGINEERING
-                </h3>
-                <p
-                  className={`text-sm leading-relaxed transition-colors duration-500 ${
-                    isDark ? "text-gray-300" : "text-gray-700"
-                  }`}
-                >
-                  Built a dynamic portal for managing 10,000+ NRCs and
-                  integrated real-time engineer-client communication, reducing
-                  resolution time by 40%.
-                </p>
-              </div>
+  {/* ACM Amsoc */}
+  <div
+    className={`p-6 border transition-colors duration-500 ${
+      isDark
+        ? "border-white/10 bg-gradient-to-br from-blue-500/5 to-purple-500/5"
+        : "border-gray-200 bg-gradient-to-br from-blue-50 to-purple-50"
+    }`}
+  >
+    <h3
+      className={`text-lg font-black mb-3 transition-colors duration-500 ${
+        isDark ? "text-white" : "text-gray-900"
+      }`}
+    >
+      REAL-TIME OPEN SOURCE TRACKING
+    </h3>
+    <p
+      className={`text-sm leading-relaxed transition-colors duration-500 ${
+        isDark ? "text-gray-300" : "text-gray-700"
+      }`}
+    >
+      Led full-stack development of Winter & Summer of Code platforms for 1000+
+      users. Built GitHub OAuth, state management, real-time leaderboards via
+      SSE, and Dockerized local dev. Integrated PostgreSQL and Redis for
+      scalable tracking across 100+ repositories.
+    </p>
+  </div>
 
-              {/* SyncHubb */}
-              <div
-                className={`p-6 border transition-colors duration-500 ${
-                  isDark
-                    ? "border-white/10 bg-gradient-to-br from-green-500/5 to-blue-500/5"
-                    : "border-gray-200 bg-gradient-to-br from-green-50 to-blue-50"
-                }`}
-              >
-                <h3
-                  className={`text-lg font-black mb-3 transition-colors duration-500 ${
-                    isDark ? "text-white" : "text-gray-900"
-                  }`}
-                >
-                  UI DEVELOPMENT & OPTIMIZATION
-                </h3>
-                <p
-                  className={`text-sm leading-relaxed transition-colors duration-500 ${
-                    isDark ? "text-gray-300" : "text-gray-700"
-                  }`}
-                >
-                  Translated 25+ Figma mockups into responsive components and
-                  launched a hackathon hub used by 300+ students, improving UI
-                  dev speed by 30%.
-                </p>
-              </div>
+  {/* ACE */}
+  <div
+    className={`p-6 border transition-colors duration-500 ${
+      isDark
+        ? "border-white/10 bg-gradient-to-br from-green-500/5 to-blue-500/5"
+        : "border-gray-200 bg-gradient-to-br from-green-50 to-blue-50"
+    }`}
+  >
+    <h3
+      className={`text-lg font-black mb-3 transition-colors duration-500 ${
+        isDark ? "text-white" : "text-gray-900"
+      }`}
+    >
+      EVENT PLATFORM & TICKETING SYSTEM
+    </h3>
+    <p
+      className={`text-sm leading-relaxed transition-colors duration-500 ${
+        isDark ? "text-gray-300" : "text-gray-700"
+      }`}
+    >
+      Built ACE’s main website and admin panel using Next.js and Zustand.
+      Developed a real-time ticketing system with QR-based check-ins and
+      analytics dashboards, enhancing event management for 300+ participants.
+    </p>
+  </div>
 
-              {/* Placement + E-Cell */}
-              <div
-                className={`p-6 border transition-colors duration-500 ${
-                  isDark
-                    ? "border-white/10 bg-gradient-to-br from-purple-500/5 to-pink-500/5"
-                    : "border-gray-200 bg-gradient-to-br from-purple-50 to-pink-50"
-                }`}
-              >
-                <h3
-                  className={`text-lg font-black mb-3 transition-colors duration-500 ${
-                    isDark ? "text-white" : "text-gray-900"
-                  }`}
-                >
-                  COORDINATION & EVENT MANAGEMENT
-                </h3>
-                <p
-                  className={`text-sm leading-relaxed transition-colors duration-500 ${
-                    isDark ? "text-gray-300" : "text-gray-700"
-                  }`}
-                >
-                  Oversaw 10+ placement drives and student events; streamlined
-                  documentation, improved outreach, and ensured 100% on-time
-                  execution.
-                </p>
-              </div>
-            </div>
+  {/* Loop.in */}
+  <div
+    className={`p-6 border transition-colors duration-500 ${
+      isDark
+        ? "border-white/10 bg-gradient-to-br from-purple-500/5 to-pink-500/5"
+        : "border-gray-200 bg-gradient-to-br from-purple-50 to-pink-50"
+    }`}
+  >
+    <h3
+      className={`text-lg font-black mb-3 transition-colors duration-500 ${
+        isDark ? "text-white" : "text-gray-900"
+      }`}
+    >
+      FRONTEND FOR EVENT BOOKING
+    </h3>
+    <p
+      className={`text-sm leading-relaxed transition-colors duration-500 ${
+        isDark ? "text-gray-300" : "text-gray-700"
+      }`}
+    >
+      Developed responsive pages for user profiles, booking flow, and payment
+      handling. Integrated 60+ backend APIs for seamless authentication,
+      payments, and event operations on Loop.in&apos;s event-ticketing platform.
+    </p>
+  </div>
+</div>
+
           </motion.section>
         </div>
 
