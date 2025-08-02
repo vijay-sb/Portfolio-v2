@@ -92,7 +92,7 @@ export function Navbar() {
               : "text-gray-900 hover:text-gray-600"
           }`}
         >
-          HEM
+          VIJAY
         </Link>
       </div>
 
@@ -150,7 +150,7 @@ export function Navbar() {
       {/* Right Side Actions */}
       <div className="hidden lg:flex items-center gap-6">
         <Link
-          href="https://github.com/HEMANTHRAJA7"
+          href="https://github.com/vijay-sb"
           target="_blank"
           rel="noopener noreferrer"
           className={`transition-colors ${
@@ -241,7 +241,7 @@ export function Navbar() {
               transition={{ delay: navLinks.length * 0.1 }}
             >
               <Link
-                href="https://github.com/HEMANTHRAJA7"
+                href="https://github.com/vijay-sb"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`flex items-center gap-3 transition-colors py-2 font-mono text-sm ${

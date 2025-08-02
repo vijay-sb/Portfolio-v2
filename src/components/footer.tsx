@@ -20,22 +20,22 @@ export function Footer() {
   const socialLinks = [
     {
       icon: <Github className="w-5 h-5" />,
-      href: "https://github.com/HEMANTHRAJA7",
+      href: "https://github.com/vijay-sb",
       label: "GitHub",
     },
     {
       icon: <Linkedin className="w-5 h-5" />,
-      href: "https://linkedin.com/in/hemanthraja7",
+      href: "https://linkedin.com/in/vijaysb06",
       label: "LinkedIn",
     },
     {
       icon: <Instagram className="w-5 h-5" />,
-      href: "https://instagram.com/hemanth_raja_7",
+      href: "https://instagram.com/_jay_418",
       label: "Instagram",
     },
     {
       icon: <Mail className="w-5 h-5" />,
-      href: "mailto:hemanthraja72@gmail.com",
+      href: "mailto:vijaysb2006@gmail.com",
       label: "Email",
     },
   ];
@@ -136,7 +136,7 @@ export function Footer() {
                 isDark ? "text-gray-400" : "text-gray-500"
               }`}
             >
-              ● hemanthraja72@gmail.com
+              ● vijaysb2006@gmail.com
               <br />● BANGLORE, INDIA
               <br />● OPEN TO REMOTE WORK
             </div>
@@ -172,7 +172,7 @@ export function Footer() {
                     : "from-purple-600 to-blue-600"
                 }`}
               >
-                HEMANTH.PORTFOLIO
+                VIJAY.PORTFOLIO
               </span>
             </Link>
             <p
@@ -266,7 +266,7 @@ export function Footer() {
               isDark ? "text-gray-400" : "text-gray-600"
             }`}
           >
-             HEMANTH.PORTFOLIO. Made with{" "}
+             VIJAY.PORTFOLIO. Made with{" "}
             <Heart className="inline-block w-4 h-4 text-red-500" />
           </p>
           <div className="flex gap-6 text-sm font-mono">
