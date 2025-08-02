@@ -186,7 +186,7 @@ export default function AboutPage() {
                   Passionate about developing scalable, efficient, and
                   user-centric software solutions, with expertise in web
                   development. Currently exploring DevOps technologies to push
-                  the boundaries of what's possible.
+                  the boundaries of what&apos;s possible.
                 </p>
                 <p>
                   Outside of development, I enjoy exploring emerging

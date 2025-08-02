@@ -140,7 +140,7 @@ export default function ContactPage() {
                   animate={{ scale: [1, 1.2, 1] }}
                   transition={{ duration: 1, repeat: Number.POSITIVE_INFINITY }}
                 />
-                LET'S BUILD SOMETHING TOGETHER
+                LET&apos;S BUILD SOMETHING TOGETHER
               </div>
             </motion.div>
           </div>

@@ -24,7 +24,7 @@ import {
 } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { useTheme } from "@/src/contexts/theme-context"
-import { div } from "framer-motion/client"
+
 
 type CommandResult = {
   command: string

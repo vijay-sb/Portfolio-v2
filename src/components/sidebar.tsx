@@ -98,7 +98,7 @@ export function Navbar() {
 
       {/* Desktop Navigation */}
       <div className="hidden lg:flex gap-8 items-center">
-        {navLinks.map((link, index) => (
+        {navLinks.map((link) => (
           <Link key={link.href} href={link.href} className="group relative">
             <motion.div
               className={`text-sm font-mono transition-colors duration-300 ${

@@ -83,7 +83,7 @@ export function Footer() {
                 isDark ? "text-white" : "text-gray-900"
               }`}
             >
-              LET'S
+              LET&apos;S
               <br />
               CONNECT
             </h2>

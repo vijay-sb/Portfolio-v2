@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, TerminalIcon } from "lucide-react";
+import {  TerminalIcon } from "lucide-react";
 import { Terminal } from "@/src/components/terminal";
 import { useTheme } from "@/src/contexts/theme-context";
 
@@ -68,8 +68,8 @@ function GuitarStringGrid({ isDark }: { isDark: boolean }) {
       const mouse = mouseRef.current;
 
       // Update grid points based on mouse influence
-      gridPoints.forEach((column, colIndex) => {
-        column.forEach((point, rowIndex) => {
+      gridPoints.forEach((column) => {
+        column.forEach((point) => {
           const dx = mouse.x - point.x;
           const dy = mouse.y - point.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
