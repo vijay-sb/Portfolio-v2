@@ -188,7 +188,7 @@ export default function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const { theme } = useTheme();
 
-  const roles = ["FULL STACK", "REACT EXPERT", "NODE.JS DEV", "UI CREATOR"];
+  const roles = ["FULL STACK", "MOB APP DEV", "WEB 3", "UI CREATOR"];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -379,7 +379,7 @@ export default function Hero() {
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.3 }}
           >
-            HEMANTH
+            VIJAY
             <br />
             <span
               className={`transition-colors duration-500 ${
@@ -410,8 +410,8 @@ export default function Hero() {
               ease: "linear",
             }}
           >
-            ● FULL STACK DEVELOPER ● REACT SPECIALIST ● NODE.JS ● UI/UX
-            ENTHUSIAST ● PROBLEM SOLVER ● Typescript 
+            ● FULL STACK DEVELOPER ● MOBILE APP DEVELOPER ● AI/WEB3 ● UI/UX
+             ● PROBLEM SOLVER ● Typescript ● GO
           </motion.div>
 
           <motion.button
@@ -439,7 +439,7 @@ export default function Hero() {
             isDark ? "text-white" : "text-gray-900"
           }`}
         >
-          HEMANTH
+          VIJAY
           <br />
           <span
             className={`transition-colors duration-500 ${
