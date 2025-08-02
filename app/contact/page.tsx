@@ -168,8 +168,8 @@ export default function ContactPage() {
                 isDark ? "text-gray-400" : "text-gray-500"
               }`}
             >
-              ● hemanthraja72@gmail.com
-              <br />● +91 8610364790
+              ● vijaysb2006@gmail.com
+              <br />● +91 9361327068
               <br />● BANGLORE, INDIA
             </div>
           </motion.div>
@@ -206,7 +206,7 @@ export default function ContactPage() {
                 <p className="text-sm mt-2 font-mono">{"I'll get back to you as soon as possible."}</p>
               </motion.div>
             ) : (
-              <form className="space-y-8" action="https://formsubmit.co/cf65bb2776f35eabece1df2903d71ba5" method="POST">
+              <form className="space-y-6" action="https://formsubmit.co/f71a97fcb0abdf67a1501a4ad8937103" method="POST">
                 <input type="hidden" name="_captcha" value="false" />
                 <input type="hidden" name="_template" value="table" />
 
@@ -232,7 +232,7 @@ export default function ContactPage() {
                           ? "border-white/20 text-white placeholder:text-gray-500"
                           : "border-gray-300 text-gray-900 placeholder:text-gray-400"
                       }`}
-                      placeholder="John Doe"
+                      placeholder="Name"
                     />
                   </div>
                   <div>
@@ -256,7 +256,7 @@ export default function ContactPage() {
                           ? "border-white/20 text-white placeholder:text-gray-500"
                           : "border-gray-300 text-gray-900 placeholder:text-gray-400"
                       }`}
-                      placeholder="john@example.com"
+                      placeholder="name@example.com"
                     />
                   </div>
                 </div>
@@ -384,7 +384,7 @@ export default function ContactPage() {
                       isDark ? "text-gray-300" : "text-gray-700"
                     }`}
                   >
-                    hemanthraja72@gmail.com
+                    vijaysb2006@gmail.com
                   </a>
                 </div>
               </div>
@@ -403,7 +403,7 @@ export default function ContactPage() {
                       isDark ? "text-gray-300" : "text-gray-700"
                     }`}
                   >
-                    +91 8610364790
+                    +91 9361327068
                   </a>
                 </div>
               </div>
@@ -451,7 +451,7 @@ export default function ContactPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <a
-              href="https://github.com/HEMANTHRAJA7"
+              href="https://github.com/vijay-sb"
               target="_blank"
               rel="noopener noreferrer"
               className={`group flex items-center gap-4 p-6 transition-colors ${
@@ -472,13 +472,13 @@ export default function ContactPage() {
                     isDark ? "text-gray-400" : "text-gray-600"
                   }`}
                 >
-                  github.com/HEMANTHRAJA7
+                  github.com/vijay-sb
                 </div>
               </div>
             </a>
 
             <a
-              href="https://linkedin.com/in/hemanthraja7"
+              href="https://linkedin.com/in/vijaysb06"
               target="_blank"
               rel="noopener noreferrer"
               className={`group flex items-center gap-4 p-6 transition-colors ${
@@ -499,13 +499,13 @@ export default function ContactPage() {
                     isDark ? "text-gray-400" : "text-gray-600"
                   }`}
                 >
-                  linkedin.com/in/hemanthraja7
+                 linkedin.com/in/vijaysb06
                 </div>
               </div>
             </a>
 
             <a
-              href="https://instagram.com/hemanth_raja_7"
+               href="https://instagram.com/_jay_418"
               target="_blank"
               rel="noopener noreferrer"
               className={`group flex items-center gap-4 p-6 transition-colors ${
@@ -526,7 +526,7 @@ export default function ContactPage() {
                     isDark ? "text-gray-400" : "text-gray-600"
                   }`}
                 >
-                  instagram.com/hemanth_raja_7
+                  instagram.com/_jay_418
                 </div>
               </div>
             </a>
