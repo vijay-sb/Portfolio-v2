@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Navbar } from "@/src/components/sidebar";
 import { Footer } from "@/src/components/footer";
-import { Calendar, MapPin, School, Heart, Globe } from "lucide-react";
+import { Calendar, MapPin, School } from "lucide-react";
 import { useTheme } from "@/src/contexts/theme-context";
 
 // Gentle breathing dots - representing life and growth
@@ -134,24 +134,18 @@ export default function AboutPage() {
                   isDark ? "text-white" : "text-gray-900"
                 }`}
               >
-                HEMANTH
+                Vijay S B
                 <br />
-                <span
-                  className={`transition-colors duration-500 ${
-                    isDark ? "text-gray-400" : "text-gray-600"
-                  }`}
-                >
-                  RAJA
-                </span>
+  
               </h2>
               <div
                 className={`text-sm font-mono leading-relaxed transition-colors duration-500 ${
                   isDark ? "text-gray-400" : "text-gray-500"
                 }`}
               >
-                ● FULL STACK DEVELOPER
-                <br />● DEVOPS ENTHUSIAST
-                <br />● IT UNDERGRADUATE
+                ● SOFTWARE DEVELOPER
+                <br />● AI/WEB3 ENTHUSIAST
+                <br />● CSE UNDERGRADUATE
               </div>
             </motion.div>
           </motion.div>
@@ -179,19 +173,18 @@ export default function AboutPage() {
               >
                 <p>
                   {
-                    "Hello! I'm Hemanth Raja — a dedicated full-stack developer with a strong focus on crafting efficient, elegant, and user-centric web applications."
+                    "Hello! I'm Vijay SB — a dedicated full-stack developer with a strong focus on crafting efficient, elegant, and user-centric web applications."
                   }
                 </p>
                 <p>
-                  Passionate about developing scalable, efficient, and
-                  user-centric software solutions, with expertise in web
-                  development. Currently exploring DevOps technologies to push
-                  the boundaries of what&apos;s possible.
+                                   Passionate about developing scalable, efficient, and
+                  user-centric software solutions, with expertise in web and
+                  mobile development. Currently exploring Web3 and AI
                 </p>
                 <p>
-                  Outside of development, I enjoy exploring emerging
-                  technologies, crafting beautiful user interfaces, and playing
-                  sports to maintain a healthy work-life balance.
+                Outside of development, I enjoy exploring emerging
+                  technologies, contributing to open-source projects, and
+                  playing some sports
                 </p>
               </div>
             </motion.section>
@@ -266,7 +259,7 @@ export default function AboutPage() {
                         isDark ? "text-gray-400" : "text-gray-600"
                       }`}
                     >
-                      IT Undergraduate
+                      CSE Undergraduate
                     </div>
                   </div>
                 </div>
@@ -296,10 +289,10 @@ export default function AboutPage() {
                     isDark ? "text-white" : "text-gray-900"
                   }`}
                 >
-                  BTECH INFORMATION TECHNOLOGY
+                  Btech in Computer Science and Engineering
                 </h3>
                 <div className="text-purple-400 font-mono text-sm mb-4">
-                  VELLORE INSTITUTE OF TECHNOLOGY, VELLORE • 2023 - 2027
+                   Amrita Vishwa Vidyapeetam • 2023 - 2027
                 </div>
                 <p
                   className={`leading-relaxed transition-colors duration-500 ${
@@ -321,21 +314,21 @@ export default function AboutPage() {
                   HIGHER SECONDARY
                 </h3>
                 <div className="text-purple-400 font-mono text-sm mb-4">
-                  MAHARISHI VIDYA MANDIR, HOSUR • 2021 - 2023
+                  Advaith International Academy • 2021 - 2023
                 </div>
                 <p
                   className={`leading-relaxed transition-colors duration-500 ${
                     isDark ? "text-gray-300" : "text-gray-700"
                   }`}
                 >
-                  Completed with a focus on science and mathematics. Achieved
-                  94% with strong performance in analytical subjects.
+           Completed higher secondary education with a focus on
+                      science and mathematics. Achieved total grade of 90%{" "}
                 </p>
               </div>
             </div>
           </motion.section>
 
-          {/* What I Love Section */}
+          {/* What I Love Section
           <motion.section
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -408,7 +401,7 @@ export default function AboutPage() {
                 </div>
               </div>
             </div>
-          </motion.section>
+          </motion.section> */}
 
           {/* Languages Section */}
           <motion.section
@@ -418,7 +411,7 @@ export default function AboutPage() {
             className="mt-20"
           >
             <h2
-              className={`text-2xl font-black mb-12 font-mono tracking-wider transition-colors duration-500 ${
+              className={`text-2xl font-black mb-4 font-mono tracking-wider transition-colors duration-500 ${
                 isDark ? "text-white" : "text-gray-900"
               }`}
             >
@@ -426,50 +419,9 @@ export default function AboutPage() {
             </h2>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-              {/* Mother Tongue */}
-              <div className="lg:col-span-3">
-                <div className="flex items-center gap-3 mb-4">
-                  <Globe className="w-5 h-5 text-purple-400" />
-                  <h3
-                    className={`text-lg font-black transition-colors duration-500 ${
-                      isDark ? "text-white" : "text-gray-900"
-                    }`}
-                  >
-                    MOTHER TONGUE
-                  </h3>
-                </div>
-              </div>
-              <div className="lg:col-span-9">
-                <motion.span
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.05 }}
-                  className={`px-4 py-2 font-mono text-sm border transition-all duration-300 hover:scale-105 ${
-                    isDark
-                      ? "border-white/20 text-gray-300 hover:border-white/40 hover:text-white"
-                      : "border-gray-300 text-gray-700 hover:border-gray-400 hover:text-gray-900"
-                  }`}
-                >
-                  Kannada
-                </motion.span>
-              </div>
-
-              {/* Others */}
-              <div className="lg:col-span-3 mt-8">
-                <div className="flex items-center gap-3 mb-4">
-                  <Globe className="w-5 h-5 text-purple-400" />
-                  <h3
-                    className={`text-lg font-black transition-colors duration-500 ${
-                      isDark ? "text-white" : "text-gray-900"
-                    }`}
-                  >
-                    OTHERS
-                  </h3>
-                </div>
-              </div>
               <div className="lg:col-span-9 mt-8">
                 <div className="flex flex-wrap gap-3">
-                  {["English", "Tamil", "Hindi"].map((language, index) => (
+                  {["English", "Tamil"].map((language, index) => (
                     <motion.span
                       key={index}
                       initial={{ opacity: 0, scale: 0.8 }}
@@ -487,33 +439,6 @@ export default function AboutPage() {
                 </div>
               </div>
 
-              {/* Beginner */}
-              <div className="lg:col-span-3 mt-8">
-                <div className="flex items-center gap-3 mb-4">
-                  <Globe className="w-5 h-5 text-purple-400" />
-                  <h3
-                    className={`text-lg font-black transition-colors duration-500 ${
-                      isDark ? "text-white" : "text-gray-900"
-                    }`}
-                  >
-                    BEGINNER
-                  </h3>
-                </div>
-              </div>
-              <div className="lg:col-span-9 mt-8">
-                <motion.span
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.05 }}
-                  className={`px-4 py-2 font-mono text-sm border transition-all duration-300 hover:scale-105 ${
-                    isDark
-                      ? "border-white/20 text-gray-300 hover:border-white/40 hover:text-white"
-                      : "border-gray-300 text-gray-700 hover:border-gray-400 hover:text-gray-900"
-                  }`}
-                >
-                  Telugu
-                </motion.span>
-              </div>
             </div>
           </motion.section>
         </div>
