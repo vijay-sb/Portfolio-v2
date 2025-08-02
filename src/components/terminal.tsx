@@ -64,7 +64,7 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
               <Command className="w-5 h-5" />
               <span>Welcome to My Terminal</span>
             </div>
-            <p className="mb-2">Type commands to explore my portfolio.</p>
+            <p className="mb-2">Type HELP to explore available commands.</p>
             <div
               className={`text-xs italic rounded-r ${
                 isDark
@@ -235,11 +235,12 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
               }`}
             >
               <p className={`mb-3 ${isDark ? "text-gray-300" : "text-gray-700"}`}>
-                {"I'm Hemanth Raja, a full-stack developer passionate about creating elegant and functional web applications."}
+                {"I'm VIjay SB, a full-stack developer passionate about creating elegant and functional web applications."}
               </p>
               <p className={`mb-3 ${isDark ? "text-gray-300" : "text-gray-700"}`}>
-                With expertise in both frontend and backend technologies, I build scalable solutions that deliver
-                exceptional user experiences.
+                                With expertise in both frontend and backend technologies, I
+                build scalable solutions that deliver exceptional user
+                experiences.
               </p>
               <p className={isDark ? "text-gray-300" : "text-gray-700"}>
                 {
@@ -307,9 +308,9 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
                   "Prisma",
                   "Drizzle",
                   "JWT",
-                  "Redis",
+                  "redis",
                   "Postman",
-                  "Bruno",
+                  "bruno",
                   "Ollama",
                   "Hugging Face",
                   "OpenAI",
@@ -336,7 +337,13 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
                 DevOps
               </p>
               <div className="flex flex-wrap gap-2">
-                {["Docker", "Azure", "CI/CD", "Docker Compose", "Nginx", "Grafana", "Prometheus"].map((skill) => (
+                {[ "Docker",
+                  "Azzure",
+                  "CI/CD",
+                  "Docker Compose",
+                  "Nginx",
+                  "Grafana",
+                  "Prometheus",].map((skill) => (
                   <Badge
                     key={skill}
                     variant="outline"
@@ -356,7 +363,7 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
                 Programming Languages
               </p>
               <div className="flex flex-wrap gap-2">
-                {["Python", "Java", "Javascript", "Typescript", "Haskell", "C", "C++"].map((skill) => (
+                {["Python", "Java", "Javascript", "Typescript", "Haskell", "C", "C++","Go"].map((skill) => (
                   <Badge
                     key={skill}
                     variant="outline"
@@ -447,10 +454,10 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
               <div className="flex items-center gap-2 mb-3">
                 <Mail className={`w-4 h-4 ${isDark ? "text-blue-400" : "text-blue-600"}`} />
                 <a
-                  href="mailto:hemanthraja72@gmail.com"
+                  href="mailto:vijaysb2006@gmail.com"
                   className={`hover:underline ${isDark ? "text-blue-400" : "text-blue-600"}`}
                 >
-                  hemanthraja72@gmail.com
+                  vijaysb2006@gmail.com
                 </a>
               </div>
               <div className="flex items-center gap-2 mb-3">
@@ -476,7 +483,7 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               <a
-                href="https://github.com/HEMANTHRAJA7"
+                href="https://github.com/vijay-sb"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`flex items-center gap-3 p-3 rounded-lg border transition-colors ${
@@ -488,11 +495,11 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
                 <Github className={`w-5 h-5 ${isDark ? "text-white" : "text-gray-700"}`} />
                 <div>
                   <div className={`font-medium ${isDark ? "text-blue-400" : "text-gray-900"}`}>GitHub</div>
-                  <div className={`text-sm ${isDark ? "text-gray-400" : "text-gray-600"}`}>github.com/HEMANTHRAJA7</div>
+                  <div className={`text-sm ${isDark ? "text-gray-400" : "text-gray-600"}`}>github.com/vijay-sb</div>
                 </div>
               </a>
               <a
-                href="https://linkedin.com/in/hemanthraja7"
+                href="https://linkedin.com/in/vijaysb06"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`flex items-center gap-3 p-3 rounded-lg border transition-colors ${
@@ -507,13 +514,13 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
                 <div>
                   <div className={`font-medium ${isDark ? "text-blue-400" : "text-gray-900"}`}>LinkedIn</div>
                   <div className={`text-sm ${isDark ? "text-gray-400" : "text-gray-600"}`}>
-                    linkedin.com/in/hemanthraja7
+                    linkedin.com/in/vijaysb06
                   </div>
                 </div>
               </a>
 
               <a
-                href="https://instagram.com/hemanth_raja_7"
+                href="https://instagram.com/_jay_418"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`flex items-center gap-3 p-3 rounded-lg border transition-colors ${
@@ -525,7 +532,7 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
                 <div className="w-5 h-5 bg-gradient-to-br from-pink-500 via-red-500 to-yellow-500 rounded-full"></div>
                 <div>
                   <div className={`font-medium ${isDark ? "text-blue-400" : "text-gray-900"}`}>Instagram</div>
-                  <div className={`text-sm ${isDark ? "text-gray-400" : "text-gray-600"}`}>instagram.com/hemanth_raja_7</div>
+                  <div className={`text-sm ${isDark ? "text-gray-400" : "text-gray-600"}`}>instagram.com/_jay_418</div>
                 </div>
               </a>
             </div>
@@ -533,7 +540,7 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
         )
         break
       case "github":
-        window.open("https://github.com/HEMANTHRAJA7", "_blank")
+        window.open("https://github.com/vijay-sb", "_blank")
         output = <p className={isDark ? "text-green-400" : "text-green-700"}>Opening GitHub profile in a new tab...</p>
         break
       case "clear":
@@ -544,11 +551,11 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
         output = (
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-white font-bold">
-              HR
+              VJ
             </div>
             <div>
-              <div className={`font-medium ${isDark ? "text-green-400" : "text-gray-900"}`}>Hemanth Raja</div>
-              <div className={`text-sm ${isDark ? "text-gray-400" : "text-gray-600"}`}>Full Stack Developer</div>
+              <div className={`font-medium ${isDark ? "text-green-400" : "text-gray-900"}`}>Vijay S B</div>
+              <div className={`text-sm ${isDark ? "text-gray-400" : "text-gray-600"}`}>Software Developer</div>
             </div>
           </div>
         )
@@ -678,7 +685,7 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
           </div>
           <div className={`w-px h-4 mx-2 ${isDark ? "bg-white/10" : "bg-gray-300"}`}></div>
           <TerminalIcon className={`w-4 h-4 ${isDark ? "text-green-400" : "text-gray-600"}`} />
-          <span className={`text-sm font-mono ${isDark ? "text-gray-300" : "text-gray-700"}`}>hemanth@portfolio</span>
+          <span className={`text-sm font-mono ${isDark ? "text-gray-300" : "text-gray-700"}`}>vijaysb@portfolio</span>
         </div>
         <div className="flex items-center gap-2">
           <button
