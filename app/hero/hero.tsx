@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {  TerminalIcon } from "lucide-react";
+import { TerminalIcon } from "lucide-react";
 import { Terminal } from "@/src/components/terminal";
 import { useTheme } from "@/src/contexts/theme-context";
 
@@ -20,10 +20,20 @@ function GuitarStringGrid({ isDark }: { isDark: boolean }) {
     if (!ctx) return;
 
     const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      // Use consistent viewport dimensions across browsers
+      const rect = canvas.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+
+      ctx.scale(dpr, dpr);
+
+      canvas.style.width = rect.width + "px";
+      canvas.style.height = rect.height + "px";
     };
 
+    // Initial resize
     resizeCanvas();
 
     const gridSize = 60;
@@ -43,27 +53,44 @@ function GuitarStringGrid({ isDark }: { isDark: boolean }) {
       }>
     > = [];
 
-    for (let x = 0; x <= canvas.width + gridSize; x += gridSize) {
-      const column = [];
-      for (let y = 0; y <= canvas.height + gridSize; y += gridSize) {
-        column.push({
-          x,
-          y,
-          originalX: x,
-          originalY: y,
-          vx: 0,
-          vy: 0,
-        });
+    const initializeGrid = () => {
+      gridPoints.length = 0;
+      const rect = canvas.getBoundingClientRect();
+
+      for (let x = 0; x <= rect.width + gridSize; x += gridSize) {
+        const column = [];
+        for (let y = 0; y <= rect.height + gridSize; y += gridSize) {
+          column.push({
+            x,
+            y,
+            originalX: x,
+            originalY: y,
+            vx: 0,
+            vy: 0,
+          });
+        }
+        gridPoints.push(column);
       }
-      gridPoints.push(column);
-    }
+    };
+
+    initializeGrid();
 
     const handleMouseMove = (e: MouseEvent) => {
-      mouseRef.current = { x: e.clientX, y: e.clientY };
+      const rect = canvas.getBoundingClientRect();
+      mouseRef.current = {
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+      };
+    };
+
+    const handleResize = () => {
+      resizeCanvas();
+      initializeGrid();
     };
 
     const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const rect = canvas.getBoundingClientRect();
+      ctx.clearRect(0, 0, rect.width, rect.height);
 
       const mouse = mouseRef.current;
 
@@ -73,7 +100,7 @@ function GuitarStringGrid({ isDark }: { isDark: boolean }) {
           const dx = mouse.x - point.x;
           const dy = mouse.y - point.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
-          const influence = Math.max(0, 1 - distance / 150); // Influence radius of 150px
+          const influence = Math.max(0, 1 - distance / 150);
 
           if (influence > 0) {
             const force = influence * influence * 2;
@@ -112,11 +139,13 @@ function GuitarStringGrid({ isDark }: { isDark: boolean }) {
         });
       });
 
-      // Draw grid lines
+      // Draw grid lines with consistent styling
       ctx.strokeStyle = isDark
         ? "rgba(255, 255, 255, 0.1)"
         : "rgba(0, 0, 0, 0.15)";
       ctx.lineWidth = 1;
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
 
       // Draw vertical lines
       for (let colIndex = 0; colIndex < gridPoints.length; colIndex++) {
@@ -161,12 +190,12 @@ function GuitarStringGrid({ isDark }: { isDark: boolean }) {
     };
 
     window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("resize", resizeCanvas);
+    window.addEventListener("resize", handleResize);
     animate();
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("resize", resizeCanvas);
+      window.removeEventListener("resize", handleResize);
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
       }
@@ -188,7 +217,7 @@ export default function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const { theme } = useTheme();
 
-  const roles = ["FULL STACK", "MOB APP DEV", "WEB 3", "UI CREATOR"];
+  const roles = ["FULL STACK", "REACT EXPERT", "NODE.JS DEV", "UI CREATOR"];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -216,11 +245,16 @@ export default function Hero() {
 
   return (
     <div
-      className={`relative min-h-screen overflow-hidden transition-colors duration-500 ${
+      className={`relative w-full transition-colors duration-500 ${
         isDark
           ? "bg-black"
           : "bg-gradient-to-b from-orange-50 via-pink-25 to-blue-50"
       }`}
+      style={{
+        minHeight: "100vh",
+        height: "100vh",
+        overflow: "hidden",
+      }}
     >
       {/* Background overlay */}
       <div
@@ -236,11 +270,12 @@ export default function Hero() {
 
       {/* Mouse follower effect */}
       <motion.div
-        className={`absolute w-80 h-80 rounded-full blur-3xl pointer-events-none transition-colors duration-500 ${
+        className={`fixed w-80 h-80 rounded-full blur-3xl pointer-events-none transition-colors duration-500 ${
           isDark
             ? "bg-gradient-to-r from-blue-500/35 to-purple-500/35"
             : "bg-gradient-to-r from-blue-500/20 to-purple-500/20"
         }`}
+        style={{ zIndex: 2 }}
         animate={{
           x: mousePosition.x - 160,
           y: mousePosition.y - 160,
@@ -253,10 +288,10 @@ export default function Hero() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.5 }}
-        className="absolute top-20 right-8 z-10 text-right"
+        className="absolute top-4 pt-[50px] lg:pt-0 right-4 sm:top-8 sm:right-8 lg:top-20 lg:right-8 z-10 text-right"
       >
         <div
-          className={`text-md font-mono leading-relaxed transition-colors duration-500 ${
+          className={`text-xs sm:text-sm lg:text-md font-mono leading-relaxed transition-colors duration-500 ${
             isDark ? "text-gray-400" : "text-gray-500"
           }`}
         >
@@ -266,163 +301,179 @@ export default function Hero() {
         </div>
       </motion.div>
 
-      {/* Main Content */}
-      <div className="relative z-10 min-h-screen flex items-center justify-between px-8 sm:px-12 lg:px-16 pt-16">
-        {/* Left Side - Main Title */}
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, delay: 0.3 }}
-          className="max-w-2xl"
-        >
-          <h1
-            className={`text-6xl sm:text-7xl lg:text-8xl xl:text-9xl font-black leading-none tracking-tight transition-colors duration-500 ${
-              isDark ? "text-white" : "text-gray-900"
-            }`}
-          >
-            CREATIVE
-            <br />
-            DEVELOPER
-            <div className="relative h-[100px]">
-              <motion.span
-                className={`absolute right-0 top-0 text-[100px] transition-colors duration-500 ${
-                  isDark ? "text-gray-400" : "text-gray-600"
-                }`}
-                animate={{ rotate: [0, 360] }}
-                transition={{
-                  duration: 10,
-                  repeat: Number.POSITIVE_INFINITY,
-                  ease: "linear",
-                }}
-              >
-                *
-              </motion.span>
-            </div>
-          </h1>
-
-          {/* Subtitle with rotating roles */}
+      {/* Main Content Container */}
+      <div className="relative z-10 w-full h-full flex flex-col justify-center px-4 sm:px-8 lg:px-16">
+        <div className="flex items-center justify-between w-full max-w-none">
+          {/* Left Side - Main Title */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className={`mt-8 text-lg sm:text-xl font-mono h-8 overflow-hidden transition-colors duration-500 ${
-              isDark ? "text-gray-300" : "text-gray-600"
-            }`}
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, delay: 0.3 }}
+            className="flex-1 max-w-2xl"
           >
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentRole}
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: -30, opacity: 0 }}
-                transition={{ duration: 0.4 }}
-                className="flex items-center gap-2"
-              >
-                <motion.span
-                  className={`w-2 h-2 rounded-full transition-colors duration-500 ${
-                    isDark ? "bg-green-400" : "bg-red-500"
-                  }`}
-                  animate={{ scale: [1, 1.2, 1] }}
-                  transition={{ duration: 1, repeat: Number.POSITIVE_INFINITY }}
-                />
-                {roles[currentRole]}
-              </motion.div>
-            </AnimatePresence>
-          </motion.div>
-
-          {/* CTA Button */}
-          <motion.button
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
-            onClick={() => setShowTerminal(true)}
-            className={`group mt-12 px-8 py-4 font-mono text-sm tracking-wider transition-all duration-300 relative overflow-hidden ${
-              isDark
-                ? "bg-white text-black hover:bg-gray-100"
-                : "bg-gray-900 text-white hover:bg-gray-800"
-            }`}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <span className="relative z-10 flex items-center gap-2">
-              <TerminalIcon className="w-4 h-4" />
-              OPEN_TERMINAL
-            </span>
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600"
-              initial={{ x: "-100%" }}
-              whileHover={{ x: "0%" }}
-              transition={{ duration: 0.3 }}
-            />
-            <motion.span
-              className="absolute inset-0 flex items-center justify-center gap-2 text-white font-mono text-sm tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              initial={{ opacity: 0 }}
-              whileHover={{ opacity: 1 }}
-            >
-              <TerminalIcon className="w-4 h-4" />
-              OPEN_TERMINAL
-            </motion.span>
-          </motion.button>
-        </motion.div>
-
-        {/* Right Side - Name */}
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, delay: 0.6 }}
-          className="hidden lg:block text-right "
-        >
-          <motion.h2
-            className={`text-5xl xl:text-6xl font-black leading-none tracking-tight transition-colors duration-500 ${
-              isDark ? "text-white" : "text-gray-900"
-            }`}
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.3 }}
-          >
-            VIJAY
-            <br />
-            <span
-              className={`transition-colors duration-500 ${
-                isDark ? "text-gray-400" : "text-gray-600"
+            <h1
+              className={`text-6xl sm:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-black leading-none tracking-tight transition-colors duration-500 ${
+                isDark ? "text-white" : "text-gray-900"
               }`}
             >
+              SOFTWARE
+              <br />
               DEVELOPER
-            </span>
-          </motion.h2>
-        </motion.div>
+              <div className="relative h-[60px] sm:h-[80px] lg:h-[100px]">
+                <motion.span
+                  className={`absolute right-0 top-0 text-[60px] sm:text-[80px] lg:text-[100px] transition-colors duration-500 ${
+                    isDark ? "text-gray-400" : "text-gray-600"
+                  }`}
+                  animate={{ rotate: [0, 360] }}
+                  transition={{
+                    duration: 10,
+                    repeat: Number.POSITIVE_INFINITY,
+                    ease: "linear",
+                  }}
+                >
+                  *
+                </motion.span>
+              </div>
+            </h1>
+
+            {/* Subtitle with rotating roles */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className={`mt-4 sm:mt-6 lg:mt-8 text-sm sm:text-lg lg:text-xl font-mono h-6 sm:h-7 lg:h-8 overflow-hidden transition-colors duration-500 ${
+                isDark ? "text-gray-300" : "text-gray-600"
+              }`}
+            >
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentRole}
+                  initial={{ y: 30, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -30, opacity: 0 }}
+                  transition={{ duration: 0.4 }}
+                  className="flex items-center gap-2"
+                >
+                  <motion.span
+                    className={`w-2 h-2 rounded-full transition-colors duration-500 ${
+                      isDark ? "bg-green-400" : "bg-red-500"
+                    }`}
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{
+                      duration: 1,
+                      repeat: Number.POSITIVE_INFINITY,
+                    }}
+                  />
+                  {roles[currentRole]}
+                </motion.div>
+              </AnimatePresence>
+            </motion.div>
+
+            {/* CTA Button */}
+            <motion.button
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.2 }}
+              onClick={() => setShowTerminal(true)}
+              className={`group mt-8 sm:mt-10 lg:mt-12 px-6 sm:px-8 py-3 sm:py-4 font-mono text-xs sm:text-sm tracking-wider transition-all duration-300 relative overflow-hidden ${
+                isDark
+                  ? "bg-white text-black hover:bg-gray-100"
+                  : "bg-gray-900 text-white hover:bg-gray-800"
+              }`}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <span className="relative z-10 flex items-center gap-2">
+                <TerminalIcon className="w-3 h-3 sm:w-4 sm:h-4" />
+                OPEN_TERMINAL
+              </span>
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600"
+                initial={{ x: "-100%" }}
+                whileHover={{ x: "0%" }}
+                transition={{ duration: 0.3 }}
+              />
+              <motion.span
+                className="absolute inset-0 flex items-center justify-center gap-2 text-white font-mono text-xs sm:text-sm tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                initial={{ opacity: 0 }}
+                whileHover={{ opacity: 1 }}
+              >
+                <TerminalIcon className="w-3 h-3 sm:w-4 sm:h-4" />
+                OPEN_TERMINAL
+              </motion.span>
+            </motion.button>
+          </motion.div>
+
+          {/* Right Side - Name */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, delay: 0.6 }}
+            className="hidden lg:block text-right flex-shrink-0 ml-8"
+          >
+            <motion.h2
+              className={`text-4xl xl:text-5xl 2xl:text-6xl font-black leading-none tracking-tight transition-colors duration-500 ${
+                isDark ? "text-white" : "text-gray-900"
+              }`}
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+            >
+              VIJAY
+              <br />
+              <span
+                className={`transition-colors duration-500 ${
+                  isDark ? "text-gray-400" : "text-gray-600"
+                }`}
+              >
+                DEVELOPER
+              </span>
+            </motion.h2>
+          </motion.div>
+        </div>
       </div>
 
-      {/* Bottom Info */}
+      {/* Bottom Info - Fixed positioning to prevent overlap */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 1 }}
-        className="absolute bottom-8 left-8 right-8 z-10"
+        className="absolute bottom-4 sm:bottom-6 lg:bottom-8 left-4 right-4 sm:left-8 sm:right-8 z-10"
       >
-        <div className="flex justify-between items-end">
+        <div className="flex justify-between items-end gap-4">
           <motion.div
-            className={`text-md font-mono max-w-2xl pl-8 overflow-hidden transition-colors duration-500 ${
+            className={`text-xs sm:text-sm lg:text-md font-mono max-w-[calc(100%-60px)] lg:max-w-2xl lg:pl-8 transition-colors duration-500 ${
               isDark ? "text-gray-400" : "text-gray-500"
             }`}
-            transition={{
-              duration: 20,
-              repeat: Number.POSITIVE_INFINITY,
-              ease: "linear",
+            style={{
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
             }}
           >
-            ● FULL STACK DEVELOPER ● MOBILE APP DEVELOPER ● AI/WEB3 ● UI/UX
-             ● PROBLEM SOLVER ● Typescript ● GO
+            <motion.div
+              animate={{ x: [0, -100] }}
+              transition={{
+                duration: 20,
+                repeat: Number.POSITIVE_INFINITY,
+                ease: "linear",
+              }}
+              className="inline-block"
+            >
+              ● FULL STACK  ● MOBILE APPLICATION DEV ● AI ● UI/UX
+               ● PROBLEM SOLVER ● WEB3 ENTHUSIAST&nbsp;&nbsp;&nbsp;&nbsp;
+            </motion.div>
           </motion.div>
 
           <motion.button
             onClick={scrollToNext}
-            className={`transition-colors ${
+            className={`flex-shrink-0 transition-colors ${
               isDark
                 ? "text-gray-400 hover:text-gray-200"
                 : "text-gray-500 hover:text-gray-700"
             }`}
             whileHover={{ scale: 1.1 }}
           >
+            {/* Add scroll indicator if needed */}
           </motion.button>
         </div>
       </motion.div>
@@ -432,10 +483,10 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.6 }}
-        className="lg:hidden absolute bottom-[150px] right-8 text-right"
+        className="lg:hidden absolute bottom-[80px] sm:bottom-[100px] right-4 sm:right-8 text-right z-10"
       >
         <h2
-          className={`text-3xl sm:text-4xl font-black leading-none tracking-tight transition-colors duration-500 ${
+          className={`text-4xl sm:text-3xl md:text-4xl font-black leading-none tracking-tight transition-colors duration-500 ${
             isDark ? "text-white" : "text-gray-900"
           }`}
         >
@@ -451,14 +502,23 @@ export default function Hero() {
         </h2>
       </motion.div>
 
-      {/* Terminal Modal */}
+      {/* Terminal Modal - Enhanced for cross-browser compatibility */}
       <AnimatePresence>
         {showTerminal && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+            style={{
+              zIndex: 9999,
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              width: "100vw",
+              height: "100vh", // Dynamic viewport height
+            }}
             onClick={() => setShowTerminal(false)}
           >
             <motion.div
@@ -466,7 +526,11 @@ export default function Hero() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-6xl"
+              className="w-full max-w-6xl overflow-hidden"
+              style={{
+                margin: "auto",
+                position: "relative",
+              }}
             >
               <Terminal onClose={() => setShowTerminal(false)} />
             </motion.div>
