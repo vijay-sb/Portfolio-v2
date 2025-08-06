@@ -25,7 +25,6 @@ import {
 import { Badge } from "@/components/ui/badge"
 import { useTheme } from "@/src/contexts/theme-context"
 
-
 type CommandResult = {
   command: string
   output: React.ReactNode
@@ -59,12 +58,14 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
         output: (
           <div className={`space-y-3 ${isDark ? "text-green-400" : "text-gray-700"}`}>
             <div
-              className={`text-xl font-bold mb-3 flex items-center gap-2 ${isDark ? "text-blue-400" : "text-gray-900"}`}
+              className={`text-base sm:text-xl font-bold mb-3 flex items-center gap-2 ${
+                isDark ? "text-blue-400" : "text-gray-900"
+              }`}
             >
-              <Command className="w-5 h-5" />
+              <Command className="w-4 h-4 sm:w-5 sm:h-5" />
               <span>Welcome to My Terminal</span>
             </div>
-            <p className="mb-2">Type HELP to explore available commands.</p>
+            <p className="mb-2 text-sm sm:text-base">Type help to explore available commands</p>
             <div
               className={`text-xs italic rounded-r ${
                 isDark
@@ -181,11 +182,15 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
       case "help":
         output = (
           <div className="space-y-4">
-            <p className={`font-semibold flex items-center gap-2 ${isDark ? "text-blue-400" : "text-gray-900"}`}>
+            <p
+              className={`font-semibold flex items-center gap-2 text-sm sm:text-base ${
+                isDark ? "text-blue-400" : "text-gray-900"
+              }`}
+            >
               <Command className="w-4 h-4" />
               <span>Available commands:</span>
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 gap-3">
               {allCommands.map((cmd) => (
                 <div
                   key={cmd.command}
@@ -194,17 +199,23 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
                   }`}
                 >
                   <div
-                    className={`w-6 h-6 flex items-center justify-center transition-colors ${
+                    className={`w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center transition-colors ${
                       isDark ? "text-gray-400 group-hover:text-blue-400" : "text-gray-500 group-hover:text-gray-700"
                     }`}
                   >
                     {cmd.icon}
                   </div>
-                  <span className={`font-mono font-medium ${isDark ? "text-yellow-300" : "text-gray-900"}`}>
+                  <span
+                    className={`font-mono font-medium text-sm sm:text-base ${
+                      isDark ? "text-yellow-300" : "text-gray-900"
+                    }`}
+                  >
                     {cmd.command}
                   </span>
-                  <span className={isDark ? "text-gray-400" : "text-gray-400"}>-</span>
-                  <span className={`text-sm ${isDark ? "text-gray-300" : "text-gray-600"}`}>{cmd.description}</span>
+                  <span className={`hidden sm:inline ${isDark ? "text-gray-400" : "text-gray-400"}`}>-</span>
+                  <span className={`text-xs sm:text-sm ${isDark ? "text-gray-300" : "text-gray-600"}`}>
+                    {cmd.description}
+                  </span>
                 </div>
               ))}
             </div>
@@ -223,28 +234,34 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
       case "about":
         output = (
           <div className="space-y-4">
-            <div className={`font-semibold flex items-center gap-2 ${isDark ? "text-blue-400" : "text-gray-900"}`}>
+            <div
+              className={`font-semibold flex items-center gap-2 text-sm sm:text-base ${
+                isDark ? "text-blue-400" : "text-gray-900"
+              }`}
+            >
               <User className="w-4 h-4" />
               <span>About Me:</span>
             </div>
             <div
-              className={`p-4 rounded-lg border ${
+              className={`p-3 sm:p-4 rounded-lg border ${
                 isDark
                   ? "bg-gradient-to-r from-blue-950/30 to-purple-950/30 border-blue-500/20"
                   : "bg-gradient-to-r from-blue-50 to-purple-50 border-gray-200"
               }`}
             >
-              <p className={`mb-3 ${isDark ? "text-gray-300" : "text-gray-700"}`}>
-                {"I'm VIjay SB, a full-stack developer passionate about creating elegant and functional web applications."}
+              <p className={`mb-3 text-sm sm:text-base ${isDark ? "text-gray-300" : "text-gray-700"}`}>
+                {
+                  "I'm Vijay SB, a full-stack developer passionate about creating elegant and functional web applications."
+                }
               </p>
-              <p className={`mb-3 ${isDark ? "text-gray-300" : "text-gray-700"}`}>
-                                With expertise in both frontend and backend technologies, I
+              <p className={`mb-3 text-sm sm:text-base ${isDark ? "text-gray-300" : "text-gray-700"}`}>
+                With expertise in both frontend and backend technologies, I
                 build scalable solutions that deliver exceptional user
                 experiences.
               </p>
-              <p className={isDark ? "text-gray-300" : "text-gray-700"}>
+              <p className={`text-sm sm:text-base ${isDark ? "text-gray-300" : "text-gray-700"}`}>
                 {
-                  "When I’m not coding, I enjoy exploring new technologies, crafting beautiful user interfaces, and playing sports like badminton and football."
+                  "When I'm not coding, I enjoy exploring new technologies, crafting beautiful user interfaces, and playing sports like badminton and football."
                 }
               </p>
             </div>
@@ -254,17 +271,25 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
       case "skills":
         output = (
           <div className="space-y-5">
-            <div className={`font-semibold flex items-center gap-2 ${isDark ? "text-blue-400" : "text-gray-900"}`}>
+            <div
+              className={`font-semibold flex items-center gap-2 text-sm sm:text-base ${
+                isDark ? "text-blue-400" : "text-gray-900"
+              }`}
+            >
               <span>Technical Skills:</span>
             </div>
 
             {/* Frontend */}
             <div>
-              <p className={`font-medium mb-3 flex items-center gap-2 ${isDark ? "text-purple-400" : "text-blue-700"}`}>
+              <p
+                className={`font-medium mb-3 flex items-center gap-2 text-sm sm:text-base ${
+                  isDark ? "text-purple-400" : "text-blue-700"
+                }`}
+              >
                 <Code className="w-4 h-4" />
                 Frontend
               </p>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1 sm:gap-2">
                 {[
                   "React",
                   "Next.js",
@@ -281,9 +306,9 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
                   <Badge
                     key={skill}
                     variant="outline"
-                    className={
+                    className={`text-xs ${
                       isDark ? "border-purple-500/30 text-purple-300" : "border-blue-200 text-blue-700 bg-blue-50"
-                    }
+                    }`}
                   >
                     {skill}
                   </Badge>
@@ -293,11 +318,15 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
 
             {/* Backend */}
             <div>
-              <p className={`font-medium mb-3 flex items-center gap-2 ${isDark ? "text-green-400" : "text-green-700"}`}>
+              <p
+                className={`font-medium mb-3 flex items-center gap-2 text-sm sm:text-base ${
+                  isDark ? "text-green-400" : "text-green-700"
+                }`}
+              >
                 <Server className="w-4 h-4" />
                 Backend
               </p>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1 sm:gap-2">
                 {[
                   "Node.js",
                   "Express",
@@ -306,11 +335,11 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
                   "MySQL",
                   "REST APIs",
                   "Prisma",
-                  "Drizzle",
+                           "Drizzle",
                   "JWT",
                   "redis",
                   "Postman",
-                  "bruno",
+                  "Bruno",
                   "Ollama",
                   "Hugging Face",
                   "OpenAI",
@@ -318,9 +347,9 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
                   <Badge
                     key={skill}
                     variant="outline"
-                    className={
+                    className={`text-xs ${
                       isDark ? "border-green-500/30 text-green-300" : "border-green-200 text-green-700 bg-green-50"
-                    }
+                    }`}
                   >
                     {skill}
                   </Badge>
@@ -331,25 +360,21 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
             {/* DevOps */}
             <div>
               <p
-                className={`font-medium mb-3 flex items-center gap-2 ${isDark ? "text-orange-400" : "text-orange-700"}`}
+                className={`font-medium mb-3 flex items-center gap-2 text-sm sm:text-base ${
+                  isDark ? "text-orange-400" : "text-orange-700"
+                }`}
               >
                 <Cpu className="w-4 h-4" />
                 DevOps
               </p>
-              <div className="flex flex-wrap gap-2">
-                {[ "Docker",
-                  "Azzure",
-                  "CI/CD",
-                  "Docker Compose",
-                  "Nginx",
-                  "Grafana",
-                  "Prometheus",].map((skill) => (
+              <div className="flex flex-wrap gap-1 sm:gap-2">
+                {["Docker", "AWS", "Docker Compose","CI/CD","Nginx", "Grafana","Prometheus",  "Azzure"].map((skill) => (
                   <Badge
                     key={skill}
                     variant="outline"
-                    className={
+                    className={`text-xs ${
                       isDark ? "border-orange-500/30 text-orange-300" : "border-orange-200 text-orange-700 bg-orange-50"
-                    }
+                    }`}
                   >
                     {skill}
                   </Badge>
@@ -358,18 +383,22 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
             </div>
 
             <div>
-              <p className={`font-medium mb-3 flex items-center gap-2 ${isDark ? "text-blue-400" : "text-purple-700"}`}>
+              <p
+                className={`font-medium mb-3 flex items-center gap-2 text-sm sm:text-base ${
+                  isDark ? "text-blue-400" : "text-purple-700"
+                }`}
+              >
                 <Cpu className="w-4 h-4" />
                 Programming Languages
               </p>
-              <div className="flex flex-wrap gap-2">
-                {["Python", "Java", "Javascript", "Typescript", "Haskell", "C", "C++","Go"].map((skill) => (
+              <div className="flex flex-wrap gap-1 sm:gap-2">
+                {["Python", "Java", "Javascript", "Typescript", "Haskell", "C", "C++","GO"].map((skill) => (
                   <Badge
                     key={skill}
                     variant="outline"
-                    className={
+                    className={`text-xs ${
                       isDark ? "border-blue-500/30 text-blue-300" : "border-purple-200 text-purple-700 bg-purple-50"
-                    }
+                    }`}
                   >
                     {skill}
                   </Badge>
@@ -382,7 +411,11 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
       case "projects":
         output = (
           <div className="space-y-4">
-            <div className={`font-semibold flex items-center gap-2 ${isDark ? "text-blue-400" : "text-gray-900"}`}>
+            <div
+              className={`font-semibold flex items-center gap-2 text-sm sm:text-base ${
+                isDark ? "text-blue-400" : "text-gray-900"
+              }`}
+            >
               <Briefcase className="w-4 h-4" />
               <span>Recent Projects:</span>
             </div>
@@ -412,11 +445,17 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
               ].map((project, index) => (
                 <div
                   key={index}
-                  className={`bg-gradient-to-r ${project.color} p-4 rounded-lg ${project.border} border`}
+                  className={`bg-gradient-to-r ${project.color} p-3 sm:p-4 rounded-lg ${project.border} border`}
                 >
-                  <p className={`font-semibold mb-2 ${isDark ? "text-yellow-300" : "text-gray-900"}`}>{project.name}</p>
-                  <p className={`mb-3 text-sm ${isDark ? "text-gray-300" : "text-gray-700"}`}>{project.description}</p>
-                  <div className="flex flex-wrap gap-2">
+                  <p
+                    className={`font-semibold mb-2 text-sm sm:text-base ${isDark ? "text-yellow-300" : "text-gray-900"}`}
+                  >
+                    {project.name}
+                  </p>
+                  <p className={`mb-3 text-xs sm:text-sm ${isDark ? "text-gray-300" : "text-gray-700"}`}>
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-1 sm:gap-2">
                     {project.tech.map((tech) => (
                       <Badge
                         key={tech}
@@ -440,12 +479,16 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
       case "contact":
         output = (
           <div className="space-y-4">
-            <div className={`font-semibold flex items-center gap-2 ${isDark ? "text-blue-400" : "text-gray-900"}`}>
+            <div
+              className={`font-semibold flex items-center gap-2 text-sm sm:text-base ${
+                isDark ? "text-blue-400" : "text-gray-900"
+              }`}
+            >
               <Mail className="w-4 h-4" />
               <span>Contact Information:</span>
             </div>
             <div
-              className={`p-4 rounded-lg border ${
+              className={`p-3 sm:p-4 rounded-lg border ${
                 isDark
                   ? "bg-gradient-to-r from-blue-950/30 to-indigo-950/30 border-blue-500/20"
                   : "bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-200"
@@ -455,18 +498,20 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
                 <Mail className={`w-4 h-4 ${isDark ? "text-blue-400" : "text-blue-600"}`} />
                 <a
                   href="mailto:vijaysb2006@gmail.com"
-                  className={`hover:underline ${isDark ? "text-blue-400" : "text-blue-600"}`}
+                  className={`hover:underline text-sm sm:text-base ${isDark ? "text-blue-400" : "text-blue-600"}`}
                 >
                   vijaysb2006@gmail.com
                 </a>
               </div>
               <div className="flex items-center gap-2 mb-3">
                 <Globe className={`w-4 h-4 ${isDark ? "text-green-400" : "text-green-600"}`} />
-                <span className={isDark ? "text-gray-300" : "text-gray-700"}>Banglore, India</span>
+                <span className={`text-sm sm:text-base ${isDark ? "text-gray-300" : "text-gray-700"}`}>
+                  Banglore, India
+                </span>
               </div>
               <div className="flex items-center gap-2">
                 <Sparkles className={`w-4 h-4 ${isDark ? "text-yellow-400" : "text-yellow-600"}`} />
-                <span className={isDark ? "text-gray-300" : "text-gray-700"}>
+                <span className={`text-sm sm:text-base ${isDark ? "text-gray-300" : "text-gray-700"}`}>
                   Open to freelance and full-time opportunities
                 </span>
               </div>
@@ -477,11 +522,15 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
       case "social":
         output = (
           <div className="space-y-4">
-            <div className={`font-semibold flex items-center gap-2 ${isDark ? "text-blue-400" : "text-gray-900"}`}>
+            <div
+              className={`font-semibold flex items-center gap-2 text-sm sm:text-base ${
+                isDark ? "text-blue-400" : "text-gray-900"
+              }`}
+            >
               <Globe className="w-4 h-4" />
               <span>Social Media:</span>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 gap-3">
               <a
                 href="https://github.com/vijay-sb"
                 target="_blank"
@@ -494,8 +543,12 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
               >
                 <Github className={`w-5 h-5 ${isDark ? "text-white" : "text-gray-700"}`} />
                 <div>
-                  <div className={`font-medium ${isDark ? "text-blue-400" : "text-gray-900"}`}>GitHub</div>
-                  <div className={`text-sm ${isDark ? "text-gray-400" : "text-gray-600"}`}>github.com/vijay-sb</div>
+                  <div className={`font-medium text-sm sm:text-base ${isDark ? "text-blue-400" : "text-gray-900"}`}>
+                    GitHub
+                  </div>
+                  <div className={`text-xs sm:text-sm ${isDark ? "text-gray-400" : "text-gray-600"}`}>
+                    github.com/vijay-sb
+                  </div>
                 </div>
               </a>
               <a
@@ -512,8 +565,10 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
                   in
                 </div>
                 <div>
-                  <div className={`font-medium ${isDark ? "text-blue-400" : "text-gray-900"}`}>LinkedIn</div>
-                  <div className={`text-sm ${isDark ? "text-gray-400" : "text-gray-600"}`}>
+                  <div className={`font-medium text-sm sm:text-base ${isDark ? "text-blue-400" : "text-gray-900"}`}>
+                    LinkedIn
+                  </div>
+                  <div className={`text-xs sm:text-sm ${isDark ? "text-gray-400" : "text-gray-600"}`}>
                     linkedin.com/in/vijaysb06
                   </div>
                 </div>
@@ -531,8 +586,12 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
               >
                 <div className="w-5 h-5 bg-gradient-to-br from-pink-500 via-red-500 to-yellow-500 rounded-full"></div>
                 <div>
-                  <div className={`font-medium ${isDark ? "text-blue-400" : "text-gray-900"}`}>Instagram</div>
-                  <div className={`text-sm ${isDark ? "text-gray-400" : "text-gray-600"}`}>instagram.com/_jay_418</div>
+                  <div className={`font-medium text-sm sm:text-base ${isDark ? "text-blue-400" : "text-gray-900"}`}>
+                    Instagram
+                  </div>
+                  <div className={`text-xs sm:text-sm ${isDark ? "text-gray-400" : "text-gray-600"}`}>
+                    instagram.com/_jay_418
+                  </div>
                 </div>
               </a>
             </div>
@@ -541,7 +600,11 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
         break
       case "github":
         window.open("https://github.com/vijay-sb", "_blank")
-        output = <p className={isDark ? "text-green-400" : "text-green-700"}>Opening GitHub profile in a new tab...</p>
+        output = (
+          <p className={`text-sm sm:text-base ${isDark ? "text-green-400" : "text-green-700"}`}>
+            Opening GitHub profile in a new tab...
+          </p>
+        )
         break
       case "clear":
         setHistory([])
@@ -550,43 +613,73 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
       case "whoami":
         output = (
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-white font-bold">
+            <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-white font-bold text-xs sm:text-sm">
               VJ
             </div>
             <div>
-              <div className={`font-medium ${isDark ? "text-green-400" : "text-gray-900"}`}>Vijay S B</div>
-              <div className={`text-sm ${isDark ? "text-gray-400" : "text-gray-600"}`}>Software Developer</div>
+              <div className={`font-medium text-sm sm:text-base ${isDark ? "text-green-400" : "text-gray-900"}`}>
+                Vijay SB
+              </div>
+              <div className={`text-xs sm:text-sm ${isDark ? "text-gray-400" : "text-gray-600"}`}>
+                Software Developer
+              </div>
             </div>
           </div>
         )
         break
       case "date":
         output = (
-          <div className={`font-mono ${isDark ? "text-green-400" : "text-gray-700"}`}>
+          <div className={`font-mono text-sm sm:text-base ${isDark ? "text-green-400" : "text-gray-700"}`}>
             {new Date().toLocaleString()}
           </div>
         )
         break
       case "echo":
         output = (
-          <div className={`font-mono ${isDark ? "text-blue-300" : "text-gray-700"}`}>{args.join(" ") || "<empty>"}</div>
+          <div className={`font-mono text-sm sm:text-base ${isDark ? "text-blue-300" : "text-gray-700"}`}>
+            {args.join(" ") || "<empty>"}
+          </div>
         )
         break
       case "ls":
         output = (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2">
             {[
-              { name: "projects", color: isDark ? "text-blue-400" : "text-blue-600" },
-              { name: "resume.pdf", color: isDark ? "text-green-400" : "text-green-600" },
-              { name: "blog", color: isDark ? "text-blue-400" : "text-blue-600" },
-              { name: "contact.txt", color: isDark ? "text-green-400" : "text-green-600" },
-              { name: "skills.json", color: isDark ? "text-green-400" : "text-green-600" },
-              { name: "about.md", color: isDark ? "text-green-400" : "text-green-600" },
-              { name: "images", color: isDark ? "text-blue-400" : "text-blue-600" },
-              { name: "config.js", color: isDark ? "text-green-400" : "text-green-600" },
+              {
+                name: "projects",
+                color: isDark ? "text-blue-400" : "text-blue-600",
+              },
+              {
+                name: "resume.pdf",
+                color: isDark ? "text-green-400" : "text-green-600",
+              },
+              {
+                name: "experience.txt",
+                color: isDark ? "text-green-400" : "text-green-600",
+              },
+              {
+                name: "contact.txt",
+                color: isDark ? "text-green-400" : "text-green-600",
+              },
+              {
+                name: "skills.json",
+                color: isDark ? "text-green-400" : "text-green-600",
+              },
+              {
+                name: "about.md",
+                color: isDark ? "text-green-400" : "text-green-600",
+              },
+              {
+                name: "images",
+                color: isDark ? "text-blue-400" : "text-blue-600",
+              },
+              {
+                name: "config.js",
+                color: isDark ? "text-green-400" : "text-green-600",
+              },
             ].map((item, i) => (
-              <div key={i} className={`${item.color} flex items-center gap-1`}>
-                <FileCode className="w-4 h-4" />
+              <div key={i} className={`${item.color} flex items-center gap-1 text-xs sm:text-sm`}>
+                <FileCode className="w-3 h-3 sm:w-4 sm:h-4" />
                 {item.name}
               </div>
             ))}
@@ -596,8 +689,10 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
       default:
         output = (
           <div>
-            <p className={`mb-2 ${isDark ? "text-red-400" : "text-red-600"}`}>Command not found: {command}</p>
-            <div className={`text-sm ${isDark ? "text-gray-400" : "text-gray-600"}`}>
+            <p className={`mb-2 text-sm sm:text-base ${isDark ? "text-red-400" : "text-red-600"}`}>
+              Command not found: {command}
+            </p>
+            <div className={`text-xs sm:text-sm ${isDark ? "text-gray-400" : "text-gray-600"}`}>
               Type{" "}
               <Badge
                 variant="outline"
@@ -661,10 +756,9 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
   }
 
   return (
-
     <motion.div
       className={`backdrop-blur-xl border rounded-lg shadow-2xl overflow-hidden transition-all duration-300 ${
-        isFullscreen ? "fixed inset-4 z-50 rounded-xl" : "w-full max-w-6xl mx-auto" 
+        isFullscreen ? "fixed inset-2 sm:inset-4 z-[9999] rounded-xl" : "w-full3 max-w-6xl mx-auto"
       } ${isDark ? "bg-black/90 border-white/10" : "bg-white/95 border-gray-200"}`}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -673,21 +767,23 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
     >
       {/* Terminal header */}
       <div
-        className={`flex items-center justify-between px-4 py-3 border-b ${
+        className={`flex items-center justify-between px-3 sm:px-4 py-2 sm:py-3 border-b ${
           isDark ? "bg-gradient-to-r from-gray-900/90 to-gray-800/90 border-white/10" : "bg-gray-50 border-gray-200"
         }`}
       >
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1.5">
-            <div className={`w-3 h-3 rounded-full ${isDark ? "bg-red-500" : "bg-red-400"}`}></div>
-            <div className={`w-3 h-3 rounded-full ${isDark ? "bg-yellow-500" : "bg-yellow-400"}`}></div>
-            <div className={`w-3 h-3 rounded-full ${isDark ? "bg-green-500" : "bg-green-400"}`}></div>
+        <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-1 sm:gap-1.5">
+            <div className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full ${isDark ? "bg-red-500" : "bg-red-400"}`}></div>
+            <div className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full ${isDark ? "bg-yellow-500" : "bg-yellow-400"}`}></div>
+            <div className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full ${isDark ? "bg-green-500" : "bg-green-400"}`}></div>
           </div>
-          <div className={`w-px h-4 mx-2 ${isDark ? "bg-white/10" : "bg-gray-300"}`}></div>
-          <TerminalIcon className={`w-4 h-4 ${isDark ? "text-green-400" : "text-gray-600"}`} />
-          <span className={`text-sm font-mono ${isDark ? "text-gray-300" : "text-gray-700"}`}>vijaysb@portfolio</span>
+          <div className={`w-px h-3 sm:h-4 mx-1 sm:mx-2 ${isDark ? "bg-white/10" : "bg-gray-300"}`}></div>
+          <TerminalIcon className={`w-3 h-3 sm:w-4 sm:h-4 ${isDark ? "text-green-400" : "text-gray-600"}`} />
+          <span className={`text-xs sm:text-sm font-mono ${isDark ? "text-gray-300" : "text-gray-700"}`}>
+            vijay@portfolio
+          </span>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 sm:gap-2">
           <button
             onClick={toggleFullscreen}
             className={`p-1 transition-colors ${
@@ -695,7 +791,11 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
             }`}
             aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
           >
-            {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
+            {isFullscreen ? (
+              <Minimize2 className="w-3 h-3 sm:w-4 sm:h-4" />
+            ) : (
+              <Maximize2 className="w-3 h-3 sm:w-4 sm:h-4" />
+            )}
           </button>
           {onClose && (
             <button
@@ -705,7 +805,7 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
               }`}
               aria-label="Close terminal"
             >
-              <X className="w-4 h-4" />
+              <X className="w-3 h-3 sm:w-4 sm:h-4" />
             </button>
           )}
         </div>
@@ -714,8 +814,10 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
       {/* Terminal content */}
       <div
         ref={terminalRef}
-        className={`p-4 overflow-y-auto font-mono text-base space-y-4 transition-colors duration-300 ${
-          isFullscreen ? "h-[calc(100vh-8rem)]" : "h-[700px]" // Changed from h-[500px] to h-[700px]
+        className={`p-3 sm:p-4 overflow-y-auto font-mono text-sm sm:text-base space-y-3 sm:space-y-4 transition-colors duration-300 ${
+          isFullscreen
+            ? "h-[calc(100vh-6rem)] sm:h-[calc(100vh-8rem)]"
+            : "h-[400px] sm:h-[500px] md:h-[700px] lg:h-[600px]"
         } ${isDark ? "bg-gradient-to-b from-gray-950 to-black text-gray-300" : "bg-white text-gray-700"}`}
       >
         <AnimatePresence>
@@ -728,19 +830,19 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
               className="space-y-2"
             >
               {item.command !== "welcome" && (
-                <div className="flex items-center gap-2 text-base">
+                <div className="flex items-center gap-1 sm:gap-2 text-xs sm:text-base">
                   <span className={isDark ? "text-purple-400" : "text-blue-600"}>guest@portfolio</span>
                   <span className={isDark ? "text-gray-500" : "text-gray-400"}>~$</span>
                   <span className={isDark ? "text-white" : "text-gray-900"}>{item.command}</span>
                 </div>
               )}
-              <div className="pl-4">{item.output}</div>
+              <div className="pl-2 sm:pl-4">{item.output}</div>
             </motion.div>
           ))}
         </AnimatePresence>
 
         {/* Input line */}
-        <form onSubmit={handleSubmit} className="flex items-center gap-2 relative text-base">
+        <form onSubmit={handleSubmit} className="flex items-center gap-1 sm:gap-2 relative text-xs sm:text-base">
           <span className={isDark ? "text-purple-400" : "text-blue-600"}>guest@portfolio</span>
           <span className={isDark ? "text-gray-500" : "text-gray-400"}>~$</span>
           <div className="flex-1 flex items-center relative">
@@ -757,14 +859,14 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
 
             {showSuggestions && suggestions.length > 0 && (
               <div
-                className={`absolute top-full left-0 mt-1 w-full border rounded-md shadow-lg z-10 overflow-hidden ${
+                className={`absolute top-full left-0 mt-1 w-full border rounded-md shadow-lg z-10 overflow-hidden max-h-48 overflow-y-auto ${
                   isDark ? "bg-gray-900 border-gray-700" : "bg-white border-gray-200"
                 }`}
               >
                 {suggestions.map((suggestion, index) => (
                   <div
                     key={suggestion.command}
-                    className={`flex items-center gap-2 px-3 py-2 cursor-pointer ${
+                    className={`flex items-center gap-2 px-2 sm:px-3 py-1 sm:py-2 cursor-pointer ${
                       index === selectedSuggestion
                         ? isDark
                           ? "bg-gray-800"
@@ -780,20 +882,20 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
                     }}
                   >
                     <div
-                      className={`w-5 h-5 flex items-center justify-center ${
-                        isDark ? "text-gray-400" : "text-gray-500"
-                      }`}
+                      className={`w-4 h-4 flex items-center justify-center ${isDark ? "text-gray-400" : "text-gray-500"}`}
                     >
                       {suggestion.icon}
                     </div>
-                    <span className={`font-medium ${isDark ? "text-yellow-300" : "text-gray-900"}`}>
+                    <span className={`font-medium text-xs sm:text-sm ${isDark ? "text-yellow-300" : "text-gray-900"}`}>
                       {suggestion.command}
                     </span>
-                    <span className={`text-xs ${isDark ? "text-gray-500" : "text-gray-500"}`}>
+                    <span className={`text-xs ${isDark ? "text-gray-500" : "text-gray-500"} hidden sm:inline`}>
                       {suggestion.description}
                     </span>
                     {index === selectedSuggestion && (
-                      <span className={`ml-auto text-xs ${isDark ? "text-gray-500" : "text-gray-400"}`}>
+                      <span
+                        className={`ml-auto text-xs ${isDark ? "text-gray-500" : "text-gray-400"} hidden sm:inline`}
+                      >
                         Tab to complete
                       </span>
                     )}
@@ -807,15 +909,15 @@ export function Terminal({ onClose }: { onClose?: () => void }) {
 
       {/* Terminal footer */}
       <div
-        className={`px-4 py-2 border-t flex justify-between items-center text-xs ${
+        className={`px-3 sm:px-4 py-1 sm:py-2 border-t flex justify-between items-center text-xs ${
           isDark ? "bg-gray-900/80 border-white/10 text-gray-500" : "bg-gray-50 border-gray-200 text-gray-500"
         }`}
       >
-        <div className="flex items-center gap-2">
-          <Zap className="w-3 h-3" />
+        <div className="flex items-center gap-1 sm:gap-2">
+          <Zap className="w-2 h-2 sm:w-3 sm:h-3" />
           <span>{"Type 'help' for commands"}</span>
         </div>
-        <div>Press ESC to exit suggestions</div>
+        <div className="hidden sm:block">Press ESC to exit suggestions</div>
       </div>
     </motion.div>
   )
