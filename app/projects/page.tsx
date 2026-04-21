@@ -109,27 +109,28 @@ export default function ProjectsPage() {
     {
       title: "Interview-AI",
       description:
-        "An AI-powered interview preparation platform that provides personalized mock interviews and feedback.",
-      tags: ["Next.js", "TypeScript", "Tailwind CSS", "GEMINI", "PostgreSQL", "Clerk.io", "Drizzle"],
+        "An AI-powered interview preparation platform using Gemini APIs for role-specific questions and AI-driven webcam/audio feedback. Integrated Clerk for auth and Neon PostgreSQL for scalable storage.",
+      tags: ["Next.js", "Express.js", "Node.js", "PostgreSQL", "Clerk", "Gemini API", "TypeScript", "Tailwind CSS", "Drizzle"],
       demoUrl: "",
       githubUrl: "https://github.com/vijay-sb/Interview-AI",
       category: "ai",
       featured: true,
     },
     {
-      title: "Chronos",
-      description: "A self-hostable time table app for a classroom of 60",
-      tags: ["React Native", "TypeScript", "Expo", "NativeWind"],
+      title: "ACE Club Website",
+      description:
+        "Built the ACE club website and admin panel, implementing a real-time ticketing system with QR code generation and scan validation for event management.",
+      tags: ["React.js", "Next.js", "Recoil", "Tailwind CSS", "ShadCN", "TypeScript"],
       demoUrl: "",
-      githubUrl: "https://github.com/Infinite-Sum-Games/chronos",
-      category: "mobile",
-      featured: false,
+      githubUrl: "https://github.com/vijay-sb",
+      category: "web",
+      featured: true,
     },
     {
       title: "LeetPath Chrome Extension",
       description:
-        "Built a Chrome extension that enhances the LeetCode experience by providing suggestions based on the user's coding patterns and preferences.",
-      tags: ["OpenSource", "React", "Tailwind CSS", "Manifest V3", "JavaScript", "Firebase"],
+        "A Chrome extension for a LeetCode recommendation platform with personalized problem suggestions and Firebase synchronized login.",
+      tags: ["React", "Tailwind CSS", "Firebase", "Flask", "Express.js", "JavaScript", "Manifest V3"],
       demoUrl: "",
       githubUrl: "https://github.com/vijay-sb/LeetPath",
       category: "extension",

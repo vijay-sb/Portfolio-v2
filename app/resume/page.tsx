@@ -3,7 +3,7 @@ import { Footer } from "@/src/components/footer"
 import { Download, FileText, Code, Server, Database } from "lucide-react"
 
 export default function SkillsPage() {
-  const commingSoon = true; // Set to true to show "Coming Soon" message
+  const commingSoon = false; // Set to true to show "Coming Soon" message
   return (
     <main className="min-h-screen bg-[#050510]">
       <Navbar />
@@ -34,39 +34,28 @@ export default function SkillsPage() {
             </div>
 
             <h2 className="text-3xl font-bold text-white mb-2">Vijay</h2>
-            <p className="text-xl text-purple-400 mb-6">Full Stack Developer || Web3 || AI</p>
+            <p className="text-xl text-purple-400 mb-6">Software Engineer || Full Stack Developer || AI Engineering</p>
           </div>
 
           <div className="max-w-3xl mx-auto text-center mb-8">
-            {/* <p className="text-gray-300 text-lg leading-relaxed mb-6">
-              Passionate full-stack developer with 5+ years of experience building modern web applications. I specialize
-              in creating scalable, user-friendly solutions using cutting-edge technologies like React, Node.js, and
-              cloud platforms.
-            </p>
-
-            <p className="text-gray-400 mb-8">
-              My expertise spans across frontend development, backend architecture, database design, and DevOps
-              practices. I'm committed to writing clean, maintainable code and delivering exceptional user experiences.
-            </p> */}
-
             {/* Quick Skills Overview */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
               <div className="bg-white/5 border border-white/10 rounded-lg p-4">
                 <Code className="w-8 h-8 text-blue-400 mx-auto mb-3" />
                 <h3 className="text-white font-semibold mb-2">Frontend</h3>
-                <p className="text-gray-400 text-sm">React,TypeScript, Tailwind CSS</p>
+                <p className="text-gray-400 text-sm">Next.js, React.js, TailwindCSS, TypeScript</p>
               </div>
 
               <div className="bg-white/5 border border-white/10 rounded-lg p-4">
                 <Server className="w-8 h-8 text-green-400 mx-auto mb-3" />
                 <h3 className="text-white font-semibold mb-2">Backend</h3>
-                <p className="text-gray-400 text-sm">Node.js, Express, REST APIs</p>
+                <p className="text-gray-400 text-sm">Node.js, Express, Go, Python, Flask</p>
               </div>
 
               <div className="bg-white/5 border border-white/10 rounded-lg p-4">
                 <Database className="w-8 h-8 text-purple-400 mx-auto mb-3" />
-                <h3 className="text-white font-semibold mb-2">Database</h3>
-                <p className="text-gray-400 text-sm">MongoDB, PostgreSQL, Redis</p>
+                <h3 className="text-white font-semibold mb-2">Database & Cloud</h3>
+                <p className="text-gray-400 text-sm">PostgreSQL, Redis, AWS, GCP, Docker</p>
               </div>
             </div>
 
@@ -101,8 +90,8 @@ export default function SkillsPage() {
           <div className="flex flex-wrap gap-6 justify-center text-gray-400">
             <div className="flex items-center gap-2">
               <span>Email:</span>
-              <a href="mailto:yourmail@example.com" className="text-blue-400 hover:underline">
-               vijaysb2006@gmail.com
+              <a href="mailto:vijaysb6306@gmail.com" className="text-blue-400 hover:underline">
+               vijaysb6306@gmail.com
               </a>
             </div>
             <div className="flex items-center gap-2">
